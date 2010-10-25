@@ -1,0 +1,8 @@
+#Source Hashes
+#Mon Oct 25 10:36:25 UYST 2010
+src\\main\\scala\\code\\snippet\\HelloWorld.scala=3b09c837c43e71115453bdcfed8ffb833873186b
+src\\main\\scala\\code\\model\\User.scala=c4b55d841f4dde2006fe82b8271c8847ee908918
+src\\main\\scala\\code\\model\\Tournament.scala=8c050b81f443e1c73d722737b17b027e89ea5796
+src\\main\\scala\\bootstrap\\liftweb\\Boot.scala=92af76433286130c832ab7f60d825e108e6e5718
+src\\main\\scala\\code\\snippet\\Tournaments.scala=5e40d96450104b18a6329f24a16937e719ea0412
+src\\main\\scala\\code\\lib\\DependencyFactory.scala=ba5c90c800a10c4cef512699c84051ed1e92a02c
