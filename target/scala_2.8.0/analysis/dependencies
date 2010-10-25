@@ -1,8 +1,9 @@
 #Source Dependencies
-#Mon Oct 25 10:36:25 UYST 2010
+#Mon Oct 25 17:10:28 UYST 2010
 src\\main\\scala\\code\\snippet\\HelloWorld.scala=
-src\\main\\scala\\code\\model\\User.scala=src\\main\\scala\\code\\snippet\\HelloWorld.scala;src\\main\\scala\\bootstrap\\liftweb\\Boot.scala;src\\main\\scala\\code\\model\\Tournament.scala
-src\\main\\scala\\code\\model\\Tournament.scala=src\\main\\scala\\code\\snippet\\HelloWorld.scala;src\\main\\scala\\bootstrap\\liftweb\\Boot.scala;src\\main\\scala\\code\\model\\User.scala
+src\\main\\scala\\code\\model\\User.scala=src\\main\\scala\\code\\snippet\\Tournaments.scala;src\\main\\scala\\bootstrap\\liftweb\\Boot.scala;src\\main\\scala\\code\\model\\Tournament.scala
+src\\main\\scala\\code\\util\\Util.scala=src\\main\\scala\\code\\snippet\\Tournaments.scala
 src\\main\\scala\\bootstrap\\liftweb\\Boot.scala=
+src\\main\\scala\\code\\model\\Tournament.scala=src\\main\\scala\\code\\snippet\\Tournaments.scala;src\\main\\scala\\bootstrap\\liftweb\\Boot.scala;src\\main\\scala\\code\\model\\User.scala
 src\\main\\scala\\code\\snippet\\Tournaments.scala=
 src\\main\\scala\\code\\lib\\DependencyFactory.scala=src\\main\\scala\\code\\snippet\\HelloWorld.scala

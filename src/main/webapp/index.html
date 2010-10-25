@@ -1,4 +1,37 @@
 <lift:surround with="default" at="content">
+<head>
+  <!-- required plugins -->
+  <!--[if IE]><script type="text/javascript" src="/scripts/jquery.bgiframe.js"></script><![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="/style/ui.all.css" />
+  <link rel="stylesheet" type="text/css" href="/style/ui.datepicker.css" />
+
+  <script type="text/javascript" src="/scripts/jquery-ui.min.js"></script>
+
+
+  <style>
+  a.dp-choose-date {
+	  float: left;
+	  width: 16px;
+	  height: 16px;
+	  padding: 0;
+	  margin: 5px 3px 0;
+	  display: block;
+	  text-indent: -2000px;
+	  overflow: hidden;
+	  background: url(/scripts/calendar.png) no-repeat;
+  }
+  a.dp-choose-date.dp-disabled {
+    background-position: 0 -20px;
+	  cursor: default;
+  }
+  input.dp-applied {
+	  width: 140px;
+	  float: left;
+  }
+  </style>
+</head>
+
   <h2>Welcome to your project!</h2>
   <p>
     <lift:helloWorld.howdy>
@@ -7,32 +40,27 @@
     <br/>
     <lift:Tournaments.summary>
         <tournament:entry>
-	        <t:name /> ( <t:bgDt /> - <t:endDt />)<br/>
+	        <t:name /> ( <t:bgDt /> - <t:endDt />)<br/> <t:description />
 	    </tournament:entry>
     </lift:Tournaments.summary>
   </p>
-    <div class="column span-24">
-        <lift:AddEntry.addentry form="POST" multipart="true" >
-          <div class="column span-24"><h3>Entry Form</h3>
+    <div class="column span-20">
+        <lift:AddEntry.addentry form="POST" >
+          <div class="column span-20"><h3>Entry Form</h3>
         <div id="entryform">
           <table>
           <tr>
-            <td>Account</td>
-            <td>Date</td>
+            <td>Name</td>
             <td>Description</td>
-            <td>Value</td>
-	    <td>Receipt Image</td>
-            <td>Tags</td>
-            <td></td>
+            <td>Start Date</td>
+            <td>End Date</td>
           </tr>
           <tr>
-            <td><e:account /></td>
-            <td><e:dateOf id="entrydate" maxlength="10"/></td>
-            <td><e:desc /></td>
-            <td><e:value /></td>
-	    <td><e:receipt /></td>
-            <td><e:tags /></td>
-            <td><button>Add Expense</button></td>
+            <td><e:name /></td>
+            <td><e:description /></td>
+            <td><e:beginDate id="fromDate" maxlength="10"/></td>
+            <td><e:endDate id="toDate" maxlength="10"/></td>
+            <td><button>Add</button></td>
           </tr>
           </table>
           </div>
@@ -42,7 +70,8 @@
 
     <script type="text/javascript">
       $(function() {
-        $('#entrydate').datepicker({dateFormat:'yy/mm/dd'});
+        $('#fromDate').datepicker({dateFormat:'yy/mm/dd'});
+        $('#toDate').datepicker({dateFormat:'yy/mm/dd'});
       });
     </script>
 </lift:surround>
