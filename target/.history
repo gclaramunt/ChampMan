@@ -45,3 +45,4 @@ prepare-webapp
 update
 prepare-webapp
 jetty-run
+quit
