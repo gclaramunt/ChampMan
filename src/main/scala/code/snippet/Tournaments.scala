@@ -29,8 +29,9 @@ class Tournaments {
 	      case tournaments => tournaments.flatMap({tournament =>
 	          bind("t", chooseTemplate("tournament", "entry", xhtml),
 	          "name" -> <a href={"/tournament/" + tournament.name.is}>{tournament.name.is}</a>,
-            "bgDate" -> tournament.beginDate,
-            "endDate" -> tournament.beginDate)
+            "bgDt" -> tournament.beginDate,
+            "endDt" -> tournament.beginDate,
+            "desc" -> tournament.description )
 				})
       }
       bind("tournament", xhtml, "entry" -> entries)
@@ -61,26 +62,27 @@ class AddEntry extends StatefulSnippet {
   def add(in: NodeSeq): NodeSeq = User.currentUser match {
     case Full(user)  => {
 
-      def doTagsAndSubmit(t: String) {
+      def processEntryAdd() {
           val fromDate = Util.slashDate.parse(beginDate)
           val toDate = Util.slashDate.parse(endDate)
 
-          val tournament = Tournament.create.name(name).description(description).beginDate(fromDate).endDate(toDate)
+          val tournament = Tournament.create.name(name).description(description).beginDate(fromDate).endDate(toDate).owner(user)
           (tournament.validate) match {
             case Nil => tournament.save
-                        println ("::::::::::::::Saved tournament "+tournament)
+                         Log.info ("::::::::::::::Saved tournament "+tournament)
                         this.unregisterThisSnippet() // dpp: remove the statefullness of this snippet
-            case x => S.error(x)
+            case x => {  Log.info (":::::::::::::: Error "+x) ; S.error(x)  }
           }
       }
-
+      Log.info ("::::::::::::::BINDING")
       bind("e", in,
            "name" -> SHtml.text("", name = _),
            "description" -> SHtml.text("", description = _),
            "beginDate" -%> SHtml.text("", beginDate = _) % ("size" -> "10"),
-           "endDate" -%> SHtml.text("", endDate = _) % ("size" -> "10")
+           "endDate" -%> SHtml.text("", endDate = _) % ("size" -> "10"),
+           "submit" -> SHtml.submit("Add", processEntryAdd)
            )
     }
-    case _ => Text("")
+    case _ => { Log.info ("::::::::::::::NO MATCH") ; Text("Current user not found")  }
   }
 }
